@@ -1,0 +1,2 @@
+# Store environments outside the workspace to avoid mount FS issues in Multipass.
+detached-environments = true

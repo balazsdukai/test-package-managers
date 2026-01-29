@@ -53,3 +53,13 @@ vm-install-pixi vm=VM_NAME:
 
 vm-install-vcpkg vm=VM_NAME:
   multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && bash scripts/install-vcpkg.sh"
+
+# Build samples
+build-nix vm=VM_NAME:
+  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}}/projects/nix-flake && nix develop -c bash -lc \"cmake -S . -B build -G Ninja && cmake --build build\""
+
+build-pixi vm=VM_NAME:
+  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}}/projects/pixi && pixi run configure && pixi run build"
+
+build-vcpkg vm=VM_NAME:
+  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}}/projects/vcpkg && export VCPKG_ROOT=${VCPKG_ROOT:-$HOME/vcpkg} && cmake --preset vcpkg && cmake --build build"
