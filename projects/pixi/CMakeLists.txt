@@ -46,9 +46,8 @@ if (NOT Geogram_FOUND)
       set(VORPALINE_PLATFORM "Darwin-clang" CACHE STRING "Geogram platform")
     endif()
   endif()
-  if (NOT DEFINED GEOGRAM_WITH_GRAPHICS)
-    set(GEOGRAM_WITH_GRAPHICS OFF CACHE BOOL "Disable Geogram graphics components")
-  endif()
+  set(GEOGRAM_WITH_GRAPHICS OFF CACHE BOOL "Disable Geogram graphics components" FORCE)
+  set(GEOGRAM_LIB_ONLY ON CACHE BOOL "Build Geogram library only" FORCE)
   FetchContent_Declare(
     geogram
     GIT_REPOSITORY https://github.com/BrunoLevy/geogram.git
