@@ -13,6 +13,7 @@ VM_DISK := "30G"
 VM_USER := "ubuntu"
 VM_MOUNT_NAME := "workspace"
 VM_MOUNT_PATH := "/home/" + VM_USER + "/" + VM_MOUNT_NAME
+VM_VCPKG_ROOT := "/home/" + VM_USER + "/vcpkg"
 
 # Show available tasks
 help:
@@ -86,7 +87,7 @@ vm-install-pixi vm=VM_NAME_PIXI:
   multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && bash scripts/install-pixi.sh"
 
 vm-install-vcpkg vm=VM_NAME_VCPKG:
-  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && bash scripts/install-vcpkg.sh"
+  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && export VCPKG_ROOT={{VM_VCPKG_ROOT}} && bash scripts/install-vcpkg.sh"
 
 vm-provision-all:
   @just vm-provision-base {{VM_NAME_NIX}}
@@ -106,7 +107,7 @@ build-pixi vm=VM_NAME_PIXI:
   multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}}/projects/pixi && pixi run configure && pixi run build"
 
 build-vcpkg vm=VM_NAME_VCPKG:
-  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}}/projects/vcpkg && export VCPKG_ROOT=${VCPKG_ROOT:-$HOME/vcpkg} && cmake --preset vcpkg && cmake --build build"
+  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}}/projects/vcpkg && export VCPKG_ROOT={{VM_VCPKG_ROOT}} && cmake --preset vcpkg && cmake --build build"
 
 vm-build-all:
   @just build-nix

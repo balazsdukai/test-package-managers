@@ -16,15 +16,17 @@ A small, repeatable project scaffold for testing C++ workflows with nix flakes, 
 ## Quick start
 1. Review `justfile` variables at the top and adjust VM name, image, CPU/RAM/disk, and `VM_USER` (the username inside the VM).
 2. Create the VM:
-   - `just vm-create` (or `just vm-create vm=your-vm-name`)
+   - `just vm-create` (or `just vm-create your-vm-name`)
 3. Mount this repo into the VM:
-   - `just vm-mount` (or `just vm-mount vm=your-vm-name`)
+   - `just vm-mount` (or `just vm-mount your-vm-name`)
 4. Provision base build tools inside the VM:
-   - `just vm-provision-base` (or `just vm-provision-base vm=your-vm-name`)
+   - `just vm-provision-base` (or `just vm-provision-base your-vm-name`)
 5. Install the package managers you want:
-   - `just vm-install-nix` (or `just vm-install-nix vm=your-vm-name`)
-   - `just vm-install-pixi` (or `just vm-install-pixi vm=your-vm-name`)
-   - `just vm-install-vcpkg` (or `just vm-install-vcpkg vm=your-vm-name`)
+   - `just vm-install-nix` (or `just vm-install-nix your-vm-name`)
+   - `just vm-install-pixi` (or `just vm-install-pixi your-vm-name`)
+   - `just vm-install-vcpkg` (or `just vm-install-vcpkg your-vm-name`)
+
+If named arguments don’t work in your `just` version, pass the VM name positionally as shown above.
 
 Project samples live in `projects/`.
 
