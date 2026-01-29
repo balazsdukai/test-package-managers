@@ -2,6 +2,9 @@
   "name": "pm-vcpkg",
   "version-string": "0.1.0",
   "dependencies": [
-    "fmt"
+    "fmt",
+    "cgal",
+    "manifold",
+    "geogram"
   ]
 }

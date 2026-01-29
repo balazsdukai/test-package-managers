@@ -17,6 +17,9 @@
             gcc
             gdb
             fmt
+            cgal
+            manifold
+            geogram
           ];
         };
       }

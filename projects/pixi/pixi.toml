@@ -10,6 +10,7 @@ ninja = "*"
 fmt = "*"
 cxx-compiler = "*"
 pkg-config = "*"
+cgal = "*"
 
 [tasks]
 configure = "cmake -S . -B build -G Ninja"
