@@ -1,0 +1,16 @@
+# Build outputs
+**/build
+**/build-*
+
+# IDEs
+.idea
+.vscode
+
+# Nix
+result
+.result
+.nix-*
+
+# Local env
+.env
+.DS_Store
