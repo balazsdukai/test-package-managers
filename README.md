@@ -20,7 +20,8 @@ A small, repeatable project scaffold for testing C++ workflows with nix flakes, 
 3. Mount this repo into the VM:
    - `just vm-mount` (or `just vm-mount your-vm-name`)
 4. Provision base build tools inside the VM:
-   - `just vm-provision-base` (or `just vm-provision-base your-vm-name`)
+   - `just vm-provision-base` (or `just vm-provision-base your-vm-name`) for nix/pixi
+   - `just vm-provision-vcpkg` for the vcpkg VM
 5. Install the package managers you want:
    - `just vm-install-nix` (or `just vm-install-nix your-vm-name`)
    - `just vm-install-pixi` (or `just vm-install-pixi your-vm-name`)

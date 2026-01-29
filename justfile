@@ -80,6 +80,9 @@ vm-unmount-all:
 vm-provision-base vm=VM_NAME:
   multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && bash scripts/provision-ubuntu.sh"
 
+vm-provision-vcpkg vm=VM_NAME_VCPKG:
+  multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && bash scripts/provision-ubuntu-vcpkg.sh"
+
 vm-install-nix vm=VM_NAME_NIX:
   multipass exec {{vm}} -- bash -lc "cd {{VM_MOUNT_PATH}} && bash scripts/install-nix.sh"
 
@@ -92,7 +95,7 @@ vm-install-vcpkg vm=VM_NAME_VCPKG:
 vm-provision-all:
   @just vm-provision-base {{VM_NAME_NIX}}
   @just vm-provision-base {{VM_NAME_PIXI}}
-  @just vm-provision-base {{VM_NAME_VCPKG}}
+  @just vm-provision-vcpkg {{VM_NAME_VCPKG}}
 
 vm-install-all:
   @just vm-install-nix

@@ -13,5 +13,4 @@ sudo apt-get -y install \
   gdb \
   pkg-config \
   unzip \
-  zip \
   tar
